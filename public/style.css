@@ -1,0 +1,49 @@
+@import url("reset.css");
+@import url("https://fonts.googleapis.com/css?family=Droid+Serif|Share+Tech+Mono");
+
+body {
+    font-family: arial;
+    font-size: 12pt;
+    border: 100pt;
+}
+
+header{
+}
+
+.allergy {
+  text-transform: uppercase;
+
+}
+
+#laktos, #gluten{
+  color: #ff5500;
+}
+
+#burgers {
+  background-color: black;
+  color: white;
+}
+
+.contact{
+
+}
+
+button:hover {
+  background-color: blue;
+  cursor: pointer;
+
+}
+input[type:radio]:hover{
+  cursor: pointer;
+}
+
+/*
+a, strong, em {
+    color: #0099ff;
+}
+
+p.info,
+#login p {
+    width: 80%;
+    margin: 1vw auto;
+}
