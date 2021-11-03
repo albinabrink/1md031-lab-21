@@ -1,145 +1,142 @@
-<<<<<<< HEAD
 <!DOCTYPE HTML>
 
 <html lang="en">
-   <head>
-       <title>BurgerOnline</title>
-       <meta charset="utf-8"/>
-       <link rel="stylesheet" type="text/css" href="style.css">
-   </head>
-   <body>
-     <header>
-      <h1> Välkommen till BurgerOnline </h1>
-    </header>
-      Här väljer du din burgare.
-    <main id=burgers>
+<head>
+  <title>BurgerOnline</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <header>
+    <h1> Välkommen till BurgerOnline </h1>
+  </header>
+  <main>
+    <section id="burgers">
       <div style="float:left">
-      <header>
-        <h1> Burgare 1 </h1>
-      </header>
+        <header>
+          <h1> Burgare 1 </h1>
+        </header>
         <img src="https://www.burgerdudes.se/wp-content/uploads/2019/05/jettz_cheese_mar20_ny-rec.jpg" alt="Span" title="What a burger" style="width:300px;">
         <section>
-        En enkel ostburgare.
-        Ingredienser:
-        <ul>
-          <section class="allergy">
-            <li><span id="gluten">Bröd</span></li>
+          En enkel ostburgare.
+          Ingredienser:
+          <ul>
+            <section class="allergy">
+              <li><span id="gluten">Bröd</span></li>
+            </section>
+            <li> Nötkött </li>
+            <section class="allergy">
+              <li><span id="laktos">Cheddarost</span></li>
+            </section>
+            <li> Majonäs </li>
+            <li> Senap </li>
+            <li> Saltgurka </li>
           </section>
-          <li> Nötkött </li>
-          <section class="allergy">
-          <li><span id="laktos">Cheddarost</span></li>
+        </div>
+        <div style="float:left">
+          <header>
+            <h1> Burgare 2 </h1>
+          </header>
+          <img src="https://www.isof.se/images/18.282eed401758d09d82c1b86/1604476928798/semlor.jpg" alt="Span" title="What a burger" style="width:300px;">
+          <br>
+          En nytänkande burgare.
+          Ingredienser:
+          <ul>
+            <section class="allergy">
+              <li><span id="gluten">Bröd</span></li>
+            </section>
+            <section class="allergy">
+              <li><span id="laktos">Grädde</span></li>
+            </section>
+            <li> Florsocker </li>
+            <li> Mandelmassa </li>
+          </div>
+          <div style="clear:right">
+            <header>
+              <h1> Burgare 3 </h1>
+            </header>
+            <img src="https://www.humorbibeln.se/wp-content/uploads/sites/4/2018/12/burgarevisning.jpg" alt="Span" title="What a burger" style="width:300px;">
+            <br>
+            En riktig baddare.
+            Ingredienser:
+            <ul>
+              <section class="allergy">
+                <li><span id="gluten">Bröd</span></li>
+              </section>
+              <li> Nötkött </li>
+              <li> Cheddarost </li>
+              <li> Majonäs </li>
+              <li> Senap </li>
+              <li> Saltgurka </li>
+              <li> Sallad </li>
+              <li> Bifftomat</li>
+            </div>
           </section>
+          <section id="contact">
+            <header>
+              <h1> Kundinformation </h1>
+            </header>
+            <form>
+              <p>
+                <label for="name">Förnamn och Efternamn</label><br>
+                <input type="text" id="name" name="fn" required="required" placeholder="Förnamn och Efternamn">
+              </p>
+              <p>
+                <label for="email">email</label><br>
+                <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+              </p>
+              <p>
+                <label for="street">Gatuadress</label><br>
+                <input type="text" id="street" name="ln" placeholder="Gatuadress">
+              </p>
+              <p>
+                <label for="house">Husnummer</label><br>
+                <input type="text" id="house" name="ln" placeholder="Husnummer">
+              </p>
+            </form>
 
-          <li> Majonäs </li>
-          <li> Senap </li>
-          <li> Saltgurka </li>
-        </section>
-     </div>
-     <div style="float:left">
-     <header>
-       <h1> Burgare 2 </h1>
-     </header>
-       <img src="https://www.isof.se/images/18.282eed401758d09d82c1b86/1604476928798/semlor.jpg" alt="Span" title="What a burger" style="width:300px;">
-       <br>
-       En nytänkande burgare, även söt.
-       Ingredienser:
-       <ul>
-         <section class="allergy">
-           <li><span id="gluten">Bröd</span></li>
-         </section>
-         <section class="allergy">
-         <li><span id="laktos">Grädde</span></li>
-         </section>
-         <li> Florsocker </li>
-         <li> Mandelmassa </li>
-    </div>
-    <div style="clear:right">
-    <header>
-      <h1> Burgare 3 </h1>
-    </header>
-      <img src="https://www.humorbibeln.se/wp-content/uploads/sites/4/2018/12/burgarevisning.jpg" alt="Span" title="What a burger" style="width:300px;">
-      <br>
-      En riktig baddare.
-      Ingredienser:
-      <ul>
-        <section class="allergy">
-          <li><span id="gluten">Bröd</span></li>
-        </section>
-        <li> Nötkött </li>
-        <li> Cheddarost </li>
-        <li> Majonäs </li>
-        <li> Senap </li>
-        <li> Saltgurka </li>
-        <li> Sallad </li>
-        <li> Bifftomat</li>
-   </div>
-  </main>
-  <section id="contact">
-    <header>
-      <h1> Kundinformation </h1>
-    </header>
-      <form>
-        <p>
-          <label for="name">Förnamn och Efternamn</label><br>
-          <input type="text" id="name" name="fn" required="required" placeholder="Förnamn och Efternamn">
-        </p>
-        <p>
-          <label for="email">email</label><br>
-          <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
-        </p>
-        <p>
-          <label for="street">Gatuadress</label><br>
-          <input type="text" id="street" name="ln" placeholder="Gatuadress">
-        </p>
-        <p>
-          <label for="house">Husnummer</label><br>
-          <input type="text" id="house" name="ln" placeholder="Husnummer">
-        </p>
-      </form>
+            <p>
+              <label for="payment">Betalningsmetod</label><be>
+                <select id="payment" name="pay">
+                  <option>Mastercard</option>
+                  <option>Visa</option>
+                  <option>Swisch</option>
+                  <option>Kontanter</option>
+                </select>
+              </p>
+              <br>
+              <p>
+                Kön: <br>
+                <input type="radio" name="gender" value="male">
+                <label for="male">Man</label><br>
+                <input type="radio" name="gender" value="female">
+                <label for="female">Kvinna</label><br>
+                <input type="radio" name="gender" value="nonbinary">
+                <label for="nonbinary">Icke-binär</label><br>
+                <input type="radio" name="gender" value="no">
+                <label for="noanswer">Vill inte uppge</label><br>
+              </section>
+              <button type="submit"><img src="https://w1.pngwing.com/pngs/546/859/png-transparent-food-icon-delivery-icon-sushi-pizza-delivery-scooter-courier-food-delivery-text-thumbnail.png" style="width:20px">Send Info</button>
+            </main>
 
-      <p>
-        <label for="payment">Betalningsmetod</label><be>
-          <select id="payment" name="pay">
-            <option>Mastercard</option>
-            <option>Visa</option>
-            <option>Swisch</option>
-            <option>Kontanter</option>
-          </select>
-      </p>
-      <br>
-      <p>
-        Kön: <br>
-        <input type="radio" name="gender" value="male">
-        <label for="male">Man</label><br>
-        <input type="radio" name="gender" value="female">
-        <label for="female">Kvinna</label><br>
-        <input type="radio" name="gender" value="nonbinary">
-        <label for="nonbinary">Icke-binär</label><br>
-        <input type="radio" name="gender" value="no">
-        <label for="noanswer">Vill inte uppge</label><br>
-    </section>
-    <button type="submit"><img src="https://w1.pngwing.com/pngs/546/859/png-transparent-food-icon-delivery-icon-sushi-pizza-delivery-scooter-courier-food-delivery-text-thumbnail.png" style="width:20px">Send Info</button>
-    <hr>
-    Något avslutande
-   </body>
-<!--</html>
-<!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <! built files will be auto injected -->
-  <!--</body>-->
-</html>
-=======
-Hello world
->>>>>>> 9ff630b6d87cbc56dadbdcd90e6c8f46119855f5
+            <hr>
+            Något avslutande
+          </body>
+          <!--</html>
+          <!DOCTYPE html>
+          <html lang="">
+          <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width,initial-scale=1.0">
+          <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+          <title><%= htmlWebpackPlugin.options.title %></title>
+        </head>
+        <body>
+        <noscript>
+        <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      </noscript>
+      <div id="app"></div>
+      <! built files will be auto injected -->
+      <!--</body>-->
+      </html>
