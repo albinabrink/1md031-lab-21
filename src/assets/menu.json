@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Cheese",
+    "kCal": 850,
+    "lactose": true,
+    "gluten": true,
+    "img": "https://www.burgerdudes.se/wp-content/uploads/2019/05/jettz_cheese_mar20_ny-rec.jpg"
+  },
+  {
+    "name": "Semla",
+    "kCal": 1020,
+    "lactose": true,
+    "gluten": true,
+    "img": "https://www.isof.se/images/18.282eed401758d09d82c1b86/1604476928798/semlor.jpg"
+  },
+  {
+    "name": "Cheese",
+    "kCal": 4002,
+    "lactose": true,
+    "gluten": true,
+    "img": "https://www.humorbibeln.se/wp-content/uploads/sites/4/2018/12/burgarevisning.jpg"
+  }
+]

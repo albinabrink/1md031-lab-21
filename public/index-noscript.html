@@ -1,5 +1,12 @@
-<template>
-  <div>
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+  <title>BurgerOnline</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
   <div class="header">
     <header>
       <!--<img class="headerimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUocAZdiTSKjnaj5BeZbPr8O0sbgwLGFrRpA&usqp=CAU" alt="">-->
@@ -27,7 +34,6 @@
             <li> Majonäs </li>
             <li> Senap </li>
             <li> Saltgurka </li>
-            </ul>
           </section>
         </div>
         <div style="float:left; padding:10pt">
@@ -47,7 +53,6 @@
             </section>
             <li> Florsocker </li>
             <li> Mandelmassa </li>
-            </ul>
           </div>
           <div style="float:left; padding:10pt">
             <header>
@@ -69,7 +74,6 @@
               <li> Saltgurka </li>
               <li> Sallad </li>
               <li> Bifftomat</li>
-              </ul>
             </div>
           </section>
 
@@ -100,7 +104,7 @@
             </form>
 
             <p>
-              <label for="payment">Betalningsmetod </label> <br>
+              <label for="payment">Betalningsmetod</label><be>
                 <select id="payment" name="pay">
                   <option>Mastercard</option>
                   <option>Visa</option>
@@ -109,7 +113,7 @@
                 </select>
               </p>
               <br>
-              <!--<p>-->
+              <p>
                 Kön: <br>
                 <input type="radio" name="gender" value="male">
                 <label for="male">Man</label><br>
@@ -125,177 +129,22 @@
 
             <hr>
             Något avslutande
-    <div class="Burgers">
-    <Burger v-for="burger in burgers"
-            v-bind:burger="burger"
-            v-bind:key="burger.name"/>
-  </div>
-  </div>
-  <div id="map" v-on:click="addOrder">
-    click here
-  </div>
-</template>
-
-<script>
-import Burger from '../components/Burger.vue'
-import menu from '../assets/menu.json'
-console.log(menu)
-
-import io from 'socket.io-client'
-
-const socket = io();
-
-function MenuItem(name, url, kCal, gluten, lactose) {
-  this.Name = name;
-  this.Url = url;
-  this.kCal = kCal;
-  this.gluten = gluten;
-  this.lactose = lactose;
-}
- console.log(MenuItem);
-
-const burgers = [ {name: "Cheese", url: "https://www.burgerdudes.se/wp-content/uploads/2019/05/jettz_cheese_mar20_ny-rec.jpg", kCal: 400, gluten: true, lactose: true},
-                {name: "Semla", url: "https://www.isof.se/images/18.282eed401758d09d82c1b86/1604476928798/semlor.jpg", kCal: 540, gluten: true, lactose: true},
-                {name: "Badonkadonk", url: "https://www.humorbibeln.se/wp-content/uploads/sites/4/2018/12/burgarevisning.jpg", kCal: 1270, gluten: true, lactose: true},
-]
-console.log(burgers);
-
-export default {
-  name: 'Home',
-  components: {
-    Burger
-  },
-  data: function () {
-    return {
-      burgers: burgers
-    }
-  },
-  methods: {
-    getOrderNumber: function () {
-      return Math.floor(Math.random()*100000);
-    },
-    addOrder: function (event) {
-      var offset = {x: event.currentTarget.getBoundingClientRect().left,
-                    y: event.currentTarget.getBoundingClientRect().top};
-      socket.emit("addOrder", { orderId: this.getOrderNumber(),
-                                details: { x: event.clientX - 10 - offset.x,
-                                           y: event.clientY - 10 - offset.y },
-                                orderItems: ["Beans", "Curry"]
-                              }
-                 );
-    }
-  }
-}
-</script>
-
-<style>
-.allergy {
-  text-transform: uppercase;
-}
-
-body {
-    font-family: arial;
-    font-size: 12pt;
-    border: 100pt;
-}
-
-button:hover {
-  background-color: blue;
-  cursor: pointer;
-}
-
-.Burgers {
-  display: grid;
-  grid-template-columns: auto auto auto;
-
-
-}
-
-#burgers {
-  overflow: auto;
-  background-color: black;
-  color: white;
-  margin: 10pt;
-  border: 2px dashed green;
-  margin-top: 0pt;
-  margin-bottom: 0pt;
-}
-
-/*.demo-content {
-  position: relative;
-}*/
-
-#contact{
-  margin: 10pt;
-  margin-top: 0pt;
-  padding-left: 10pt;
-  border: 2px solid black;
-}
-
-.header {
-  position: relative;
-}
-
-
-
-.header:before {
-  content: ' ';
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.6;
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUocAZdiTSKjnaj5BeZbPr8O0sbgwLGFrRpA&usqp=CAU');
-  background-repeat: no-repeat;
-  background-position: 50% 0;
-  background-size: cover;
-}
-
-
-#header{
-  overflow: hidden;
-  margin: 10pt;
-  padding-left: 10pt;
-  text-align: center;
-  /*background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUocAZdiTSKjnaj5BeZbPr8O0sbgwLGFrRpA&usqp=CAU);
-  opacity: 0.6; */
-}
-
-.headerimg{
-  opacity: 0.6;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: auto;
-}
-
-#laktos, #gluten{
-  color: #ff5500;
-}
-
-
-input[type:radio]:hover{
-  cursor: pointer;
-}
-
-/*
-a, strong, em {
-    color: #0099ff;
-}
-
-p.info,
-#login p {
-    width: 80%;
-    margin: 1vw auto;
-}
-*/
-
-  #map {
-    width: 300px;
-    height: 300px;
-    background-color: red;
-  }
-</style>
+          </body>
+          <!--</html>
+          <!DOCTYPE html>
+          <html lang="">
+          <head>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width,initial-scale=1.0">
+          <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+          <title><%= htmlWebpackPlugin.options.title %></title>
+        </head>
+        <body>
+        <noscript>
+        <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      </noscript>
+      <div id="app"></div>
+      <! built files will be auto injected -->
+      <!--</body>-->
+      </html>
