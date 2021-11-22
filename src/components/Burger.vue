@@ -9,9 +9,11 @@
     </header>
     <img v-bind:src = "burger.url" class=burgerimage>
     <section>
-    Components:
-    for
-      <ul>
+    <li v-for= "t in burger" v-bind:key="t.key">
+      {{t}}
+    </li>
+
+  <!--    <ul>
         <section class="allergy">
           <li><span id="gluten">Bröd</span></li>
         </section>
@@ -22,7 +24,7 @@
         <li> Majonäs </li>
         <li> Senap </li>
         <li> Saltgurka </li>
-        </ul>
+        </ul> -->
       </section>
       </div>
     </div>
