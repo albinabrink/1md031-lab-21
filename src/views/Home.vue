@@ -1,4 +1,5 @@
 <template>
+<main>
   <div>
   <div class="header">
     <header>
@@ -6,144 +7,55 @@
       <h1 id="headertext"> Välkommen till BurgerOnline </h1>
     </header>
   </div>
-  <main>
-    <section id="burgers">
-      <div style="float:left; padding:10pt">
-        <header>
-          <h1> Burgare 1 </h1>
-        </header>
-        <img src="https://www.burgerdudes.se/wp-content/uploads/2019/05/jettz_cheese_mar20_ny-rec.jpg" alt="Span" title="What a burger" style="width:300px;">
-        <section>
-          En enkel ostburgare.
-          Ingredienser:
-          <ul>
-            <section class="allergy">
-              <li><span id="gluten">Bröd</span></li>
-            </section>
-            <li> Nötkött </li>
-            <section class="allergy">
-              <li><span id="laktos">Cheddarost</span></li>
-            </section>
-            <li> Majonäs </li>
-            <li> Senap </li>
-            <li> Saltgurka </li>
-            </ul>
-          </section>
-        </div>
-        <div style="float:left; padding:10pt">
-          <header>
-            <h1> Burgare 2 </h1>
-          </header>
-          <img src="https://www.isof.se/images/18.282eed401758d09d82c1b86/1604476928798/semlor.jpg" alt="Span" title="What a burger" style="width:300px;">
-          <br>
-          En nytänkande burgare.
-          Ingredienser:
-          <ul>
-            <section class="allergy">
-              <li><span id="gluten">Bröd</span></li>
-            </section>
-            <section class="allergy">
-              <li><span id="laktos">Grädde</span></li>
-            </section>
-            <li> Florsocker </li>
-            <li> Mandelmassa </li>
-            </ul>
-          </div>
-          <div style="float:left; padding:10pt">
-            <header>
-              <h1> Burgare 3 </h1>
-            </header>
-            <img src="https://www.humorbibeln.se/wp-content/uploads/sites/4/2018/12/burgarevisning.jpg" alt="Span" title="What a burger" style="width:300px;">
-            <br>
-            En riktig baddare.
-            Ingredienser:
-            <ul>
-              <section class="allergy">
-                <li><span id="gluten">Bröd</span></li>
-              </section>
-              <li> Nötkött </li>
-              <section class="allergy">
-                <li><span id="laktos">Cheddarost</span></li>
-              </section>
-              <li> Senap </li>
-              <li> Saltgurka </li>
-              <li> Sallad </li>
-              <li> Bifftomat</li>
-              </ul>
-            </div>
-          </section>
-
-          <section id="contact" style="clear:left">
-            <header>
-              <h1> Kundinformation </h1>
-            </header>
-            <div>
-              hej svejs
-            </div>
-            <form>
-              <p>
-                <label for="name">Förnamn och Efternamn</label><br>
-                <input type="text" id="name" name="fn" required="required" placeholder="Förnamn och Efternamn">
-              </p>
-              <p>
-                <label for="email">email</label><br>
-                <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
-              </p>
-              <p>
-                <label for="street">Gatuadress</label><br>
-                <input type="text" id="street" name="ln" placeholder="Gatuadress">
-              </p>
-              <p>
-                <label for="house">Husnummer</label><br>
-                <input type="text" id="house" name="ln" placeholder="Husnummer">
-              </p>
-            </form>
-
-            <p>
-              <label for="payment">Betalningsmetod </label> <br>
-                <select id="payment" name="pay">
-                  <option>Mastercard</option>
-                  <option>Visa</option>
-                  <option>Swisch</option>
-                  <option>Kontanter</option>
-                </select>
-              </p>
-              <br>
-              <!--<p>-->
-                Kön: <br>
-                <input type="radio" name="gender" value="male">
-                <label for="male">Man</label><br>
-                <input type="radio" name="gender" value="female">
-                <label for="female">Kvinna</label><br>
-                <input type="radio" name="gender" value="nonbinary">
-                <label for="nonbinary">Icke-binär</label><br>
-                <input type="radio" name="gender" value="no">
-                <label for="noanswer">Vill inte uppge</label><br>
-              </section>
-              <button type="submit"><img src="https://w1.pngwing.com/pngs/546/859/png-transparent-food-icon-delivery-icon-sushi-pizza-delivery-scooter-courier-food-delivery-text-thumbnail.png" style="width:20px">Send Info</button>
-            </main>
-
-            <hr>
-            Något avslutande
-    <div class="Burgers">
+  <div class="Burgers">
     <Burger v-for="burger in burgers"
             v-bind:burger="burger"
-            v-bind:key="burger.name"/>
+            v-bind:key="burger.name"
+            v-on:orderedBurger ="addToOrder($event)"/>
   </div>
   </div>
-  <div id="map" v-on:click="addOrder">
-    click here
-  </div>
+
+<section id="contact" style="clear:left">
+  <h1> Contact information </h1>
+  <p>
+    <label for="name"> Name and surname </label> <br>
+    <input type="text" v-model="name" required="required" placeholder="Please enter name and surname">
+  </p>
+  <p>
+    <label for="email"> E-mail </label> <br>
+    <input v-model="email" required="required" placeholder="Please enter your e-mail">
+  </p>
+  <p>
+    <label for="paymentMethod"> Payment Method </label> <br>
+    <select v-model="paymentMethod">
+      <option disabled value=""> Choose your preferred method of payment </option>
+      <option v-for="pay in payment" v-bind:key="pay" :value="pay" > {{pay}} </option>
+    </select>
+  </p>
+    <label for="Gender"> Gender </label> <br>
+    <div v-for="g in gender" v-bind:key="g">
+    <input type="radio" name="g.txt" v-model="Gender" :value="g.txt">{{g.txt}}
+    </div>
+
+  <section id="mapContainer">
+    <div id="map" v-on:click="setLocation">
+      <div v-bind:style="{left:location.x + 'px', top:location.y + 'px'}">T</div>
+    </div>
+  </section>
+    <button type="submit" v-on:click="submit"><img src="https://w1.pngwing.com/pngs/546/859/png-transparent-food-icon-delivery-icon-sushi-pizza-delivery-scooter-courier-food-delivery-text-thumbnail.png" style="width:20px"> Submit Order </button>
+</section>
+</main>
+
 </template>
 
 <script>
 import Burger from '../components/Burger.vue'
 import menu from '../assets/menu.json'
-console.log(menu)
-
 import io from 'socket.io-client'
 
 const socket = io();
+
+/* Old creation of MenuItem and burgers, not used in endresult
 
 function MenuItem(name, url, kCal, gluten, lactose) {
   this.Name = name;
@@ -159,6 +71,7 @@ const burgers = [ {name: "Cheese", url: "https://www.burgerdudes.se/wp-content/u
                 {name: "Badonkadonk", url: "https://www.humorbibeln.se/wp-content/uploads/sites/4/2018/12/burgarevisning.jpg", kCal: 1270, gluten: true, lactose: true},
 ]
 console.log(burgers);
+*/
 
 export default {
   name: 'Home',
@@ -167,14 +80,30 @@ export default {
   },
   data: function () {
     return {
-      burgers: burgers
+      burgers: menu,
+      gender: [{txt:'Non-binary', val:0}, {txt:'Male', val:0}, {txt:'Female', val:0}, {txt:"Prefer not to disclose", val:0}],
+      payment: ["Credit card", "Debit Card", "Swish", "Cash", "PayPal"],
+      name: '',
+      email: '',
+      street: '',
+      orderedBurgers: {},
+      location: {x: 0,
+                 y: 0}
     }
   },
   methods: {
-    getOrderNumber: function () {
+    submit: function (){ /* What is submitted when customer is done with order and push the Submit order button.
+      console.log(this.name, this.email, this.street, this.paymentMethod, this.Gender, this.orderedBurgers) */
+      socket.emit("addOrder", { orderId: this.getOrderNumber(),
+                                details: {name: this.name, email: this.email, gender: this.Gender, payment: this.paymentMethod, x: this.location.x, y: this.location.y },
+                                orderItems: [this.orderedBurgers]
+                              }
+                 );
+      },
+    getOrderNumber: function () { /* Generates order numbers */
       return Math.floor(Math.random()*100000);
     },
-    addOrder: function (event) {
+    addOrder: function (event) { /* Old way of adding order to dispatcher view, not used */
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
       socket.emit("addOrder", { orderId: this.getOrderNumber(),
@@ -183,6 +112,15 @@ export default {
                                 orderItems: ["Beans", "Curry"]
                               }
                  );
+    },
+    addToOrder: function(event){ /* Listens to added orders from Burger.vue*/
+      this.orderedBurgers[event.name] = event.amount;
+    },
+    setLocation: function(event){ /* Location on map is saved using this function */
+      var offset = {x: event.currentTarget.getBoundingClientRect().left,
+      y: event.currentTarget.getBoundingClientRect().top};
+      this.location = {x: event.clientX - 10 -offset.x,
+      y: event.clientY - 10 - offset.y}
     }
   }
 }
@@ -199,7 +137,7 @@ body {
     border: 100pt;
 }
 
-button:hover {
+submit:hover {
   background-color: blue;
   cursor: pointer;
 }
@@ -207,8 +145,7 @@ button:hover {
 .Burgers {
   display: grid;
   grid-template-columns: auto auto auto;
-
-
+  margin: 10pt;
 }
 
 #burgers {
@@ -218,7 +155,7 @@ button:hover {
   margin: 10pt;
   border: 2px dashed green;
   margin-top: 0pt;
-  margin-bottom: 0pt;
+  margin-bottom: 20pt;
 }
 
 /*.demo-content {
@@ -236,9 +173,8 @@ button:hover {
   position: relative;
 }
 
-
-
 .header:before {
+  margin: 10 pt;
   content: ' ';
   display: block;
   position: absolute;
@@ -253,14 +189,11 @@ button:hover {
   background-size: cover;
 }
 
-
-#header{
+.header{
   overflow: hidden;
   margin: 10pt;
   padding-left: 10pt;
   text-align: center;
-  /*background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUocAZdiTSKjnaj5BeZbPr8O0sbgwLGFrRpA&usqp=CAU);
-  opacity: 0.6; */
 }
 
 .headerimg{
@@ -293,9 +226,31 @@ p.info,
 }
 */
 
-  #map {
-    width: 300px;
-    height: 300px;
-    background-color: red;
-  }
+#map div {
+  position: absolute;
+  background: black;
+  color: white;
+  border-radius: 10px;
+  width:20px;
+  height:20px;
+  text-align: center;
+}
+
+#map {
+  width: 1920px;
+  height: 1078px;
+  background: url("/img/polacks.jpg");
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  cursor: crosshair;
+}
+
+#mapContainer{
+  width: 850pt;
+  height: 800px;
+  overflow:scroll;
+  margin: 0 auto;
+}
 </style>

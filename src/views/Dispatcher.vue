@@ -2,7 +2,10 @@
   <div id="orders">
     <div id="orderList">
       <div v-for="(order, key) in orders" v-bind:key="'order'+key">
-        #{{ key }}: {{ order.orderItems.join(", ") }}
+        <h3> #{{ key }}: {{ order.orderItems }} </h3>
+       <span> Customer: {{order.details.name}}, Gender: {{order.details.gender}} <br>
+              Email: {{order.details.email}}, Payment: {{order.details.payment}}
+        </span>
       </div>
       <button v-on:click="clearQueue">Clear Queue</button>
     </div>
@@ -13,6 +16,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import io from 'socket.io-client'
 const socket = io();

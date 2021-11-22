@@ -1,18 +1,21 @@
 <template>
   <div class="burgers">
-  <div>
-    {{ burger.name }} {{ burger.kCal }}
-  </div>
   <div class="burger">
     <header>
       <h1> {{ burger.name }} </h1>
     </header>
-    <img v-bind:src = "burger.url" class=burgerimage>
+    <img v-bind:src = "burger.img" class=burgerimage>
     <section>
-    <li v-for= "t in burger" v-bind:key="t.key">
-      {{t}}
-    </li>
-
+    <ul>
+      <li> {{burger.kCal}} kCal </li>
+      <li v-if="burger.lactose" id=lactose> Contains Lactose </li>
+      <li v-if="burger.gluten" id=gluten> Contains Gluten </li>
+    </ul>
+    <div class=buttons>
+    <button v-on:click=removeBurger> - </button>
+    {{amountOrdered}}
+    <button v-on:click="addBurger"> + </button>
+    </div>
   <!--    <ul>
         <section class="allergy">
           <li><span id="gluten">Bröd</span></li>
@@ -36,6 +39,27 @@ export default {
   name: 'Burger',
   props: {
     burger: Object
+  },
+  data: function() {
+    return {
+      amountOrdered: 0,
+    }
+  },
+  methods: {
+    addBurger: function () {
+      this.amountOrdered += 1;
+      this.$emit('orderedBurger', {name: this.burger.name,
+                                 amount: this.amountOrdered}
+                );
+    },
+    removeBurger: function () {
+      if (this.amountOrdered > 0) {
+      this.amountOrdered -= 1;
+      this.$emit('orderedBurger', {name: this.burger.name,
+                                 amount: this.amountOrdered}
+                );
+    }
+    }
   }
 }
 </script>
@@ -48,11 +72,11 @@ export default {
 }
 
 .burgerimage{
-  max-width: 35%;
-  height: 250px;
+  max-width: 100%;
+  height: 100pt;
 }
 
-#laktos, #gluten{
+#lactose, #gluten{
   color: #ff5500;
 }
 
@@ -65,7 +89,6 @@ export default {
 .burgers > div {
   background-color: black;
   text-align: center;
-  padding: 20px 0;
   font-size: 30px;
 }
 
@@ -73,9 +96,19 @@ export default {
   overflow: auto;
   background-color: black;
   color: white;
-  margin: 10pt;
   border: 2px dashed green;
   margin-top: 0pt;
   margin-bottom: 0pt;
 }
+
+.buttons{
+  margin: 10pt;
+  padding: 4pt;
+}
+
+button{
+  padding: 4pt;
+  align: center;
+}
+
 </style>
