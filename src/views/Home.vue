@@ -139,7 +139,7 @@ body {
 
 submit:hover {
   background-color: blue;
-  cursor: pointer;
+  cursor: wait;
 }
 
 .Burgers {

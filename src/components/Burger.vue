@@ -6,7 +6,7 @@
     </header>
     <img v-bind:src = "burger.img" class=burgerimage>
     <section>
-    <ul>
+    <ul class="allergy">
       <li> {{burger.kCal}} kCal </li>
       <li v-if="burger.lactose" id=lactose> Contains Lactose </li>
       <li v-if="burger.gluten" id=gluten> Contains Gluten </li>
@@ -16,22 +16,9 @@
     {{amountOrdered}}
     <button v-on:click="addBurger"> + </button>
     </div>
-  <!--    <ul>
-        <section class="allergy">
-          <li><span id="gluten">Bröd</span></li>
-        </section>
-        <li> Nötkött </li>
-        <section class="allergy">
-          <li><span id="laktos">Cheddarost</span></li>
-        </section>
-        <li> Majonäs </li>
-        <li> Senap </li>
-        <li> Saltgurka </li>
-        </ul> -->
-      </section>
-      </div>
-    </div>
-
+  </section>
+  </div>
+</div>
 </template>
 
 <script>
@@ -89,7 +76,7 @@ export default {
 .burgers > div {
   background-color: black;
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .burger {
@@ -109,6 +96,10 @@ export default {
 button{
   padding: 4pt;
   align: center;
+}
+
+ul {
+  align: left;
 }
 
 </style>
